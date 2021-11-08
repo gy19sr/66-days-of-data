@@ -10,9 +10,14 @@ to do:
 
 """
 
-import random 
-import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import scipy.stats as stats
 import numpy as np
+import random
+import warnings
+import matplotlib.pyplot as plt
+import numpy.ma as ma
 
 
 # day 1:
@@ -27,7 +32,7 @@ population = np.random.normal(loc=mean, scale=strd_dev, size=population_size)
 
 # plot that population
 plt.hist(population, density=False, bins=30)  # density=True would provide probability
-plt.ylabel('count')
+plt.ylabel('Count')
 plt.xlabel('Data')
 
 
@@ -52,9 +57,42 @@ print('population variance = ', variance)
 
 #### day 2:
     
-# take a smaple from that population 
+# take a sample from that population 
 # where I can alternate n
 
-# day 3: create different types of distributions
+
+### day 3: Make Confidence Intervals
+# so start with 95% CI
+# two tailed and one tailed
+# 95% = + - 1.96 sigma
+# now how to calculate this on the fly
+
+# this works if you want to know the probability
+def normalProbabilityDensity(x):
+    constant = 1.0 / np.sqrt(2*np.pi)
+    return(constant * np.exp((-x**2) / 2.0) )
+
+
+
+CI_upper = strd_dev * 1.96 # z-table this is the value for 0.025 CL 
+CI_lower = strd_dev * -1.96
+# so this assumes two tail
+print("Upper Confidence Interval = ", CI_upper)
+print("Lower Confidence Interval = ", CI_lower)
+
+
+
+# Make everything outside confidence intervals red
+
+# Done with new graph
+
+
+# day 4: Take random sample from the population
+
+# plot sample distribution
+
+
+
+# day : create different types of distributions
 # 
 
